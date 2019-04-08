@@ -32,6 +32,8 @@ Heroku will do the work of building and hosting your Create React App project fo
 9. Add heroku as a git remote.
    `heroku git:remote -a heroku-project-name` with `heroku-project-name` being the exact name of the app you created in Step 6.
 
+   (To check what remote branch you are on:  `git remote -v`)
+
 10. Push your `master` branch up to heroku!
     `git push heroku master`
 
@@ -69,3 +71,14 @@ app.listen(port, () => console.log(`Server is running on port ${port}`));
 3. You can add a free Database add-on such as PostgreSQL by going to `Settings -> Add-ons` and searching for `'Heroku Postgres'` and chosing the `'Hobby Dev -- Free'` plan. This will add a new environmental variable in your Heroku app that includes the database connection string.
 
 - You should configure your app with a `.env` file to load in this `DATABASE_URL` to connect to your PostgreSQL database from your local node app. Alternatively you could setup your local PostgreSQL DB's connection as `DATABASE_URL` so that you can work off the local DB locally, and use the Heroku DB when deployed.
+
+- You will need to migrate and seed your database (create is not necessary once you set up your Postgres DB):
+`heroku run sequelize db:migrate --env production -m --app production-app-name`
+`heroku run sequelize db:seed:all --env production -m --app production-app-name`
+
+4. Helpful hint:  Very early on, asap, test that the front and back end of your app is functioning together on Heroku.  Be sure that you can make a request to the server from the front end, and receive a response back.  Be sure to include this milestone in your project timeline.  
+
+5. Heroku logs can be found by clicking on the "More" button in the upper right hand corner of the Heroku dashboard.
+
+6. QA testing:  As the project progresses and QA becomes involved, you can create a second version of the app for QA testing, ie: heroku-project-name-qa.  You should maintain the original heroku using your master branch, and you can post your develop branch on the heroku QA app.  To post your develop branch:
+`git push heroku develop:master`
