@@ -10,27 +10,27 @@ Heroku will do the work of building and hosting your Create React App project fo
 1. Create a Heroku account using your Accenture email address, the password should be unique and separate from your EID account.
 
 2. Install `create-react-app` if you don't have it already. If your project is already created using this, use that project instead.
-   `npm install -g create-react-app`
+   `npm install -g create-react-app` or `yarn global add create-react-app`
 
 3. Run `create-react-app new-project-name` using whatever name you please. If your project is already created using this, use that project instead.
 
-4. Run `npm install` or `yarn install`, whichever you have decided to use for your project. For today, let's say we're using `npm`
+4. Run `npm install` or `yarn install`, whichever you have decided to use for your project.  Note: If you use npm you'll need to remove the `yarn.lock` so that git is not tracking both `lock` files in the next step.
 
 5. Initialize a git repo if you haven't already `git init` while inside the react project folder.
 
-6. On [heroku](https://dashboard.heroku.com/apps), create a new app.
-   New -> Create new app
-   Name the app a unique name and click on `Create App`
-
-7. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) if you haven't already, then make sure you're logged in using your new Heroku account from Step 1.
-   `heroku login`
-
-8. Make sure your git status is all clean, if not, commit up everything.
+6. Make sure your git status is all clean, if not, commit up everything.
    `git add .`
    `git commit -m "Stuff changed"`
 
+7. On [heroku](https://dashboard.heroku.com/apps), create a new app.
+   New -> Create new app
+   Name the app a unique name and click on `Create App`
+
+8. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) if you haven't already, then make sure you're logged in using your new Heroku account from Step 1.
+   `heroku login`
+
 9. Add heroku as a git remote.
-   `heroku git:remote -a heroku-project-name` with `heroku-project-name` being the exact name of the app you created in Step 6.
+   `heroku git:remote -a heroku-project-name` with `heroku-project-name` being the exact name of the app you created in Step 6
 
    (To check what remote branch you are on:  `git remote -v`)
 
@@ -82,3 +82,5 @@ app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 6. QA testing:  As the project progresses and QA becomes involved, you can create a second version of the app for QA testing, ie: heroku-project-name-qa.  You should maintain the original heroku using your master branch, and you can post your develop branch on the heroku QA app.  To post your develop branch:
 `git push heroku develop:master`
+
+Ask your mentors how they want to handle QA on this project when it comes to Heroku deployments.
