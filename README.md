@@ -12,10 +12,12 @@ Heroku will do the work of building and hosting your Create React App project fo
 2. Install `create-react-app` if you don't have it already. If your project is already created using this, use that project instead.
    `npm install -g create-react-app` or `yarn global add create-react-app`
 
-3. Run `create-react-app new-project-name` using whatever name you please. If your project is already created using this, use that project instead.
+3. Run `create-react-app new-project-name` using whatever name you please. If your project is already created using this, use that project instead. Make sure it runs with `npm start` or `yarn start`
 
-4. Make sure your git status is all clean, if not, commit up everything.
+4. Make sure your git status is all clean, if not, commit up everything. Note: If you used `npm` you'll need to remove the `yarn.lock` file and make sure this change is commited.
+
    `git add .`
+
    `git commit -m "Stuff changed"`
 
 5. On [heroku](https://dashboard.heroku.com/apps), create a new app.
