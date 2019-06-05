@@ -14,27 +14,23 @@ Heroku will do the work of building and hosting your Create React App project fo
 
 3. Run `create-react-app new-project-name` using whatever name you please. If your project is already created using this, use that project instead.
 
-4. Run `npm install` or `yarn install`, whichever you have decided to use for your project.  Note: If you use npm you'll need to remove the `yarn.lock` so that git is not tracking both `lock` files in the next step.
-
-5. Initialize a git repo if you haven't already `git init` while inside the react project folder.
-
-6. Make sure your git status is all clean, if not, commit up everything.
+4. Make sure your git status is all clean, if not, commit up everything.
    `git add .`
    `git commit -m "Stuff changed"`
 
-7. On [heroku](https://dashboard.heroku.com/apps), create a new app.
+5. On [heroku](https://dashboard.heroku.com/apps), create a new app.
    New -> Create new app
    Name the app a unique name and click on `Create App`
 
-8. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) if you haven't already, then make sure you're logged in using your new Heroku account from Step 1.
+6. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line) if you haven't already, then make sure you're logged in using your new Heroku account from Step 1.
    `heroku login`
 
-9. Add heroku as a git remote.
+7. Add heroku as a git remote.
    `heroku git:remote -a heroku-project-name` with `heroku-project-name` being the exact name of the app you created in Step 6
 
    (To check what remote branch you are on:  `git remote -v`)
 
-10. Push your `master` branch up to heroku!
+8. Push your `master` branch up to heroku!
     `git push heroku master`
 
 - Note: You can only have one of either of these: `package-lock.json` or `yarn.lock` and if you have both, Heroku won't know whether to start your app with `npm` or `yarn`.
