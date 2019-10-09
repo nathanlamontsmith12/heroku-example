@@ -1,5 +1,5 @@
 {
-  "name": "example-heroku-app",
+  "name": "server",
   "version": "1.0.0",
   "description": "Example Node/Express app to show off heroku deployment",
   "main": "server.js",
