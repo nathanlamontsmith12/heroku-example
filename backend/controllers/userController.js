@@ -27,7 +27,7 @@ router.post("/", async (req, res)=>{
         
         const createdUser = await User.create(newUser, {fields: ["username", "is_admin"]});
 
-        res.json({code: 201, status: "OK", success: true, created: createdUser});
+        res.json({code: 201, status: "OK", success: true, data: createdUser});
     } catch (err) {
         console.error(err); 
         res.json(err); 

@@ -1,42 +1,52 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      user: null 
-    };
-  }
-  async componentDidMount(){
-    try {
-      const response = await fetch("http://localhost:3001/user", {
-        method: "POST",
-        body: JSON.stringify({
-          username: "Nate"
-        }),
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      if (response.success) {
-        console.log(response); 
-      }
-    } catch (err) {
-      console.error(err);
+    constructor(){
+        super();
+        this.state = {
+            user: null 
+        };
     }
-  }
-  render(){ 
-    console.log("USER IN STATE: ")
-    console.log(this.state.user);
-    return (
-      <div className="App">
-        <h1>HEY THERE</h1>
-      </div>
-    );
-  }
+    async makeFetch(urlSubStr, method="GET", body) {
+        try { 
+            const urlString = process.env.REACT_APP_BACKEND_URL + urlSubStr; 
+            const fetchObj = {
+                method: method,
+                credentials: "include",
+                headers: {
+                "Content-Type": "application/json"
+                }
+            }
+
+            if (body) {
+                fetchObj.body = JSON.stringify(body); 
+            } 
+
+            const response = await fetch(urlString, fetchObj); 
+            
+            return response.json(); 
+        } catch (err) {
+            console.error(err);
+            console.log("ERROR: makeFetch (APP)");
+            return err;
+        }
+    }
+    makeUserNate = async () => {
+        const response = await this.makeFetch("/user", "POST", {username: "Nate"});
+        this.setState({
+            user: response.data
+        })
+    }
+    render(){ 
+        return (
+            <div className="App">
+                <h1>HEY THERE</h1>
+                <button onClick={this.makeUserNate}>MAKE USER NATE</button>
+                <p> { this.state.user ? this.state.user.username : null } </p> 
+            </div>
+        );
+    }
 }
 
 export default App;
