@@ -1,26 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      user: null 
+    };
+  }
+  async componentDidMount(){
+    try {
+      const response = await fetch("http://localhost:3001/user", {
+        method: "POST",
+        body: JSON.stringify({
+          username: "Nate"
+        }),
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      if (response.success) {
+        console.log(response); 
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  render(){ 
+    console.log("USER IN STATE: ")
+    console.log(this.state.user);
+    return (
+      <div className="App">
+        <h1>HEY THERE</h1>
+      </div>
+    );
+  }
 }
 
 export default App;

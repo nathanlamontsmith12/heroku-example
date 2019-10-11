@@ -10,6 +10,13 @@ router.get("/", (req, res)=>{
     res.send("<h1>Hitting User Page!");
 });
 
+
+
+// requires: 
+// username: STRING 
+// optional: 
+// is_admin: BOOLEAN 
+
 router.post("/", async (req, res)=>{
     try {
 

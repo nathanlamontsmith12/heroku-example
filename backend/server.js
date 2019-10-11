@@ -9,13 +9,24 @@ const { sequelize } = require('./db/sequelize.js');
 
 // Require Express, controllers & other middleware 
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const userController = require('./controllers/userController');
 const categoryController = require('./controllers/categoryController'); 
 const bodyParser = require('body-parser');
 
 
-// apply middleware 
+const corsOptions = {
+  origin: process.env.HOST,
+  credentials: true, 
+  optionsSuccessStatus: 200 
+}
+
+
+// cors middleware 
+app.use(cors(corsOptions));
+
+// other middleware incl controllers 
 app.use(bodyParser.json());
 
 app.use("/user", userController);
