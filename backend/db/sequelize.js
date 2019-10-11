@@ -19,7 +19,6 @@ const Category = sequelize.define('category', {
     title: {type: DataTypes.STRING}
 })
 
-
 User.belongsToMany(Category, {through: "users_categories"});
 Category.belongsToMany(User, {through: "users_categories"});
 
